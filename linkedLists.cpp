@@ -1,5 +1,4 @@
-#include <iostream>
-#include <algorithm>
+#include<iostream>
 
 struct Node {
     int data;
@@ -7,29 +6,47 @@ struct Node {
 };
 
 int main() {
+    int LINKED_LIST_DEPTH;
 
-    Node *pHeadNode;
-    pHeadNode = nullptr;
+    std::cin >> LINKED_LIST_DEPTH;
 
-    Node *temp = new Node();
+    Node headNode;
+    headNode.data = 1;
+    headNode.nextNode = nullptr;
 
-    temp -> data = 2;
-    temp -> nextNode = nullptr;
+    Node *tempNode = &headNode;
 
-    pHeadNode = temp;
+    std::cout << "-------------" << std::endl;
 
-    temp = new Node();
+    for(int i = 2; i <= LINKED_LIST_DEPTH; i++) {
+        Node *newNode = new Node(); // allocate memory for newNode
+        newNode -> data = i;
+        newNode -> nextNode = nullptr;
 
-    temp -> data = 4;
-    temp -> nextNode = nullptr;
+        tempNode -> nextNode = newNode;
 
-    Node *temp1 = pHeadNode;
+        Node *newTempNode = tempNode -> nextNode; 
 
-    while(pHeadNode -> nextNode != nullptr) {
-        temp1 = pHeadNode -> nextNode;
+        tempNode = newTempNode;
     }
-    
-    temp1 -> nextNode = temp;
+
+    std::cout << "Linked List Data: " << std::endl;
+    std::cout << "-------------" << std::endl;
+
+    Node *targetNode = &headNode;
+
+    while(true) {
+        std::cout << targetNode -> data << std::endl;
+
+        Node *tempNode = targetNode -> nextNode;
+
+
+        if(tempNode == nullptr) {
+            break;
+        } else {
+            targetNode = tempNode;
+        }
+    }
 
     return 0;
 }
