@@ -51,3 +51,5 @@ int main() {
 
     return 0; 
 }
+
+// Ubuduce umjesto std::size(std::string) koristiti std::string.length()
